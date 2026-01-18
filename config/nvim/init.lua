@@ -1,4 +1,4 @@
---vim.o.autocomplete = true
+vim.o.autocomplete = true
 vim.o.winborder = "rounded"
 vim.o.clipboard = 'unnamedplus'
 vim.o.shiftwidth = 4
@@ -8,7 +8,7 @@ vim.o.termguicolors = true
 vim.o.confirm = true
 vim.o.signcolumn = 'yes'
 vim.o.completeopt = 'fuzzy,menu,menuone,popup'
-vim.o.complete = 'o'
+--vim.o.complete = 'o'
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
