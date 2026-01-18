@@ -6,7 +6,7 @@
 brew install starship fzf zoxide
 
 git clone https://github.com/delu999/config-macos
-cd my-macos-config
+cd config-config
 chmod +x script.sh
 ./script.sh
 
