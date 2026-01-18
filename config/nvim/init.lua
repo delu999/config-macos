@@ -45,6 +45,13 @@ require "mini.ai".setup()
 require "mini.surround".setup()
 require "oil".setup()
 
-
 vim.cmd.colorscheme("tokyonight")
 vim.lsp.enable({ "clangd", "lua_ls", "basedpyright" })
+
+
+vim.api.nvim_create_autocmd("TextYankPost", {
+    group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
+    callback = function()
+	vim.highlight.on_yank()
+    end,
+})
