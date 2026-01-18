@@ -7,7 +7,6 @@ alias code="open -a '/Applications/Visual Studio Code.app'" # Open a file/direct
 alias c='z'                                                 # Replaces cd with zoxide
 alias ci='zi'                                               # interactive zoxide
 alias l='ls -lahG'
-alias matlab='/Applications/MATLAB_R2025b.app/bin/matlab'                   
 
 HISTFILE=~/.zsh_history # location of the history file
 HISTFILESIZE=100000 # history limit of the file on disk
@@ -43,11 +42,3 @@ eval "$(zoxide init zsh)"
 # Set up the Starship prompt
 # Shows git status, current branch, language versions, etc.
 eval "$(starship init zsh)"export PATH=$PATH:$HOME/go/bin
-
-# bun completions
-[ -s "/Users/user/.bun/_bun" ] && source "/Users/user/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-[ -f "/Users/user/.ghcup/env" ] && . "/Users/user/.ghcup/env" # ghcup-env
