@@ -33,10 +33,10 @@ vim.keymap.set("i", "<F2>", "<Esc><cmd>bnext<CR>")
 
 
 vim.pack.add({
-	{ src = "https://github.com/neovim/nvim-lspconfig" },
-	{ src = "https://github.com/folke/tokyonight.nvim" },
-	{ src = "https://github.com/stevearc/oil.nvim" },
-	{ src = "https://github.com/echasnovski/mini.nvim" },
+        { src = "https://github.com/neovim/nvim-lspconfig" },
+        { src = "https://github.com/folke/tokyonight.nvim" },
+        { src = "https://github.com/stevearc/oil.nvim" },
+        { src = "https://github.com/echasnovski/mini.nvim" },
 })
 
 require "mini.tabline".setup()
