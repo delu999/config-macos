@@ -8,6 +8,29 @@ alias c='z'                                                 # Replaces cd with z
 alias ci='zi'                                               # interactive zoxide
 alias l='ls -lahG'
 
+gl() {
+  echo ""
+  git log --format="%h  %C(green)%ar  %C(cyan)%<(9,trunc)%an%C(reset)  %s"
+}
+
+gs() {
+    output=$(git status -s)
+    if [[ -z "$output" ]]; then
+        echo "working tree clean"
+    else
+        echo "$output"
+    fi
+}
+
+yeet() {
+  if [[ $# -eq 0 ]]; then
+    echo 'Usage: yeet "commit message"'
+    return 1
+  fi
+
+  git add . && git commit -m "$*" && git push
+}
+
 HISTFILE=~/.zsh_history # location of the history file
 HISTFILESIZE=100000 # history limit of the file on disk
 HISTSIZE=200000 # current session's history limit
