@@ -1,0 +1,21 @@
+{
+  "chat.disableAIFeatures": true,
+  "git.confirmSync": false,
+  "git.openRepositoryInParentFolders": "never",
+
+  "workbench.sideBar.location": "right",
+  "workbench.activityBar.location": "top",
+  "workbench.tree.enableStickyScroll": false,
+
+  "editor.minimap.enabled": false,
+  "editor.formatOnSave": true,
+  "editor.stickyScroll.enabled": false,
+  "editor.fontFamily": "JetBrains Mono",
+  "editor.fontSize": 15,
+  "editor.fontLigatures": true,
+  "terminal.integrated.fontLigatures.enabled": true,
+
+  "files.autoSave": "afterDelay",
+
+  "makefile.configureOnOpen": true,
+}
