@@ -1,5 +1,4 @@
 {
-  "chat.disableAIFeatures": true,
   "git.confirmSync": false,
   "git.openRepositoryInParentFolders": "never",
 
@@ -13,7 +12,12 @@
   "editor.fontFamily": "JetBrains Mono",
   "editor.fontSize": 15,
   "editor.fontLigatures": true,
+
   "terminal.integrated.fontLigatures.enabled": true,
+  "terminal.integrated.enablePersistentSessions": true,
+  "terminal.integrated.persistentSessionReviveProcess": "onExitAndWindowClose",
+
+  "chat.disableAIFeatures": true,
 
   "files.autoSave": "afterDelay",
 
