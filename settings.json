@@ -1,25 +1,10 @@
 {
-  "git.confirmSync": false,
-  "git.openRepositoryInParentFolders": "never",
-
-  "workbench.sideBar.location": "right",
-  "workbench.activityBar.location": "top",
-  "workbench.tree.enableStickyScroll": false,
-
-  "editor.minimap.enabled": false,
-  "editor.formatOnSave": true,
-  "editor.stickyScroll.enabled": false,
-  "editor.fontFamily": "JetBrains Mono",
-  "editor.fontSize": 15,
-  "editor.fontLigatures": true,
-
-  "terminal.integrated.fontLigatures.enabled": true,
-  "terminal.integrated.enablePersistentSessions": true,
-  "terminal.integrated.persistentSessionReviveProcess": "onExitAndWindowClose",
-
-  "chat.disableAIFeatures": true,
-
-  "files.autoSave": "afterDelay",
-
-  "makefile.configureOnOpen": true,
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
+    "CLAUDE_CODE_DISABLE_1M_CONTEXT": "1"
+  },
+  "enabledPlugins": {},
+  "effortLevel": "high",
+  "skipDangerousModePermissionPrompt": true,
+  "tui": "fullscreen"
 }
