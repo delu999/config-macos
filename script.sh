@@ -17,7 +17,7 @@ echo "- Hiding menu bar..."
 defaults write -g _HIHideMenuBar -bool true
 defaults write -g AppleMenuBarVisibleInFullscreen -bool false
 
-echo "- Configuring dock (auto-hide, minimal size, remove animations)..."
+echo "- Configuring dock (auto-hide, minimal size, instant hide/show)..."
 defaults write com.apple.dock autohide -bool true
 defaults write com.apple.dock tilesize -int 16
 defaults write com.apple.dock autohide-time-modifier -float 0
@@ -59,7 +59,7 @@ fi
 # ============================================
 # CONFIGURATION FILES
 # ============================================
-echo "- Setting configuration files for zsh and ghostty ..."
+echo "- Setting configuration files for zsh, ghostty, and karabiner ..."
 
 if [ -f "$SCRIPT_DIR/.zshrc" ]; then
     cp "$SCRIPT_DIR/.zshrc" "$HOME/.zshrc"
@@ -68,6 +68,16 @@ fi
 if [ -f "$SCRIPT_DIR/ghostty-config" ]; then
     mkdir -p "$HOME/.config/ghostty"
     cp "$SCRIPT_DIR/ghostty-config" "$HOME/.config/ghostty/config"
+fi
+
+if [ -f "$SCRIPT_DIR/config/ghostty/config" ]; then
+    mkdir -p "$HOME/.config/ghostty"
+    cp "$SCRIPT_DIR/config/ghostty/config" "$HOME/.config/ghostty/config"
+fi
+
+if [ -f "$SCRIPT_DIR/config/karabiner/karabiner.json" ]; then
+    mkdir -p "$HOME/.config/karabiner"
+    cp "$SCRIPT_DIR/config/karabiner/karabiner.json" "$HOME/.config/karabiner/karabiner.json"
 fi
 echo ""
 
