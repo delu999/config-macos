@@ -28,3 +28,4 @@ bindkey "\e[A" history-beginning-search-backward  # Up arrow: search history by 
 bindkey "\e[B" history-beginning-search-forward   # Down arrow: search history by prefix
 
 eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"
