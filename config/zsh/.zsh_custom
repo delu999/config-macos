@@ -9,8 +9,8 @@ export PATH="/Users/u:$PATH"
 
 # Keep a practically unlimited persistent command history and write each command to disk immediately.
 HISTFILE="$HOME/.zsh_history"
-HISTSIZE=1000000000
-SAVEHIST=1000000000
+HISTSIZE=1000000
+SAVEHIST=1000000
 HISTORY_IGNORE='(clear|exit|squash|gs|gl|ll|cd|cl|co|history)'
 
 setopt EXTENDED_HISTORY          # Write the history file in the ":start:elapsed;command" format.
