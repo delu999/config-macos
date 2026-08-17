@@ -28,4 +28,9 @@ bindkey "\e[A" history-beginning-search-backward  # Up arrow: search history by 
 bindkey "\e[B" history-beginning-search-forward   # Down arrow: search history by prefix
 
 eval "$(starship init zsh)"
-eval "$(zoxide init zsh)"
+
+if [[ -n ${GHOSTTY_RESOURCES_DIR:-} || ${TERM_PROGRAM:-} == vscode ]]; then
+  eval "$(zoxide init zsh --cmd cd)"
+else
+  eval "$(zoxide init zsh)"
+fi
