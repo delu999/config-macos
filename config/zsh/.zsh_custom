@@ -36,3 +36,34 @@ if [[ -n ${GHOSTTY_RESOURCES_DIR:-} || ${TERM_PROGRAM:-} == vscode ]]; then
 else
   eval "$(zoxide init zsh)"
 fi
+
+fzf-history-with-metadata-widget() {
+  emulate -L zsh
+
+  local selected event
+  selected=$(
+    fc -rl -t '%Y-%m-%d %H:%M:%S' -D 1 |
+      fzf \
+        --height=60% \
+        --layout=reverse \
+        --border \
+        --scheme=history \
+        --with-nth=2.. \
+        --nth=4.. \
+        --query="$LBUFFER" \
+        --header='EXECUTED            ELAPSED  COMMAND'
+  )
+
+  if [[ -n "$selected" ]]; then
+    event=${${(z)selected}[1]}
+    event=${event%\*}
+    BUFFER="$(fc -ln "$event" "$event")"
+    CURSOR=${#BUFFER}
+  fi
+
+  zle reset-prompt
+}
+
+zle -N fzf-history-with-metadata-widget
+bindkey -M emacs '^R' fzf-history-with-metadata-widget
+bindkey -M viins '^R' fzf-history-with-metadata-widget
