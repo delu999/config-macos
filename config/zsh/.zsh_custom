@@ -2,6 +2,7 @@ alias code="open -a /Applications/VSCodium.app"
 alias zed="open -a /Applications/Zed.app"
 alias cl="claude --permission-mode bypassPermissions"
 alias co="codex -a never"
+alias ll="ls -lahFG"
 
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="/Users/u:$PATH"
