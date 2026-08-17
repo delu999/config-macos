@@ -1,0 +1,32 @@
+{
+  "workbench.sideBar.location": "right",
+  "workbench.activityBar.location": "top",
+  "workbench.tree.enableStickyScroll": false,
+  "editor.minimap.enabled": false,
+  "editor.stickyScroll.enabled": true,
+  "editor.fontFamily": "JetBrains Mono",
+  "editor.fontSize": 15,
+  "editor.fontLigatures": true,
+  "terminal.integrated.fontLigatures.enabled": true,
+  "terminal.integrated.enablePersistentSessions": true,
+  "terminal.integrated.persistentSessionReviveProcess": "onExitAndWindowClose",
+  "chat.disableAIFeatures": true,
+  "files.autoSave": "afterDelay",
+  "terminal.integrated.initialHint": false,
+  "git.blame.editorDecoration.enabled": true,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "explorer.confirmDelete": false,
+  "php.validate.enable": false,
+  "git.ignoreRebaseWarning": true,
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  "security.workspace.trust.untrustedFiles": "open",
+  "git.enableSmartCommit": true,
+  "terminal.integrated.enableMultiLinePasteWarning": "never",
+  "explorer.confirmDragAndDrop": false,
+  "git.openRepositoryInParentFolders": "never",
+  "files.associations": {
+    ".zsh_custom": "shellscript",
+    ".zsh_custom_git": "shellscript"
+  }
+}

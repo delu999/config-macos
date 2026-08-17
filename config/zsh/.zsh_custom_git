@@ -1,0 +1,70 @@
+# undo last commit
+alias gundo='git reset --soft HEAD~1'
+
+# git log
+gl() {
+  echo ""
+  git log --format="%h  %C(green)%ar  %C(cyan)%<(9,trunc)%an%C(reset)  %s"
+}
+
+# git status
+gs() {
+    output=$(git status -s)
+    if [[ -z "$output" ]]; then
+        echo "working tree clean"
+    else
+        echo "$output"
+    fi
+}
+
+# add, commit (with message) and push 
+yeet() {
+  if [[ $# -eq 0 ]]; then
+    echo 'Usage: yeet "commit message"'
+    return 1
+  fi
+
+  git add . && git commit -m "$*" && git push
+}
+
+# squash all the git history in one command and push
+squash() {
+  git rev-parse --is-inside-work-tree >/dev/null 2>&1 || {
+    echo "squash: not inside a Git repository" >&2
+    return 1
+  }
+
+  [[ -z "$(git status --porcelain --untracked-files=normal)" ]] || {
+    echo "squash: working tree has staged, unstaged, or untracked files" >&2
+    return 1
+  }
+
+  local branch remote merge_ref remote_branch upstream old_head new_head
+  branch=$(git symbolic-ref --quiet --short HEAD) || {
+    echo "squash: detached HEAD is not supported" >&2
+    return 1
+  }
+  remote=$(git config --get "branch.${branch}.remote")
+  merge_ref=$(git config --get "branch.${branch}.merge")
+  [[ -n "$remote" && -n "$merge_ref" ]] || {
+    echo "squash: current branch has no upstream" >&2
+    return 1
+  }
+  remote_branch=${merge_ref#refs/heads/}
+
+  git fetch "$remote" || return 1
+  upstream=$(git rev-parse --verify "${remote}/${remote_branch}") || return 1
+  [[ "$(git rev-parse HEAD)" == "$upstream" ]] || {
+    echo "squash: local and remote branches differ; commit, push, or pull first" >&2
+    return 1
+  }
+
+  old_head=$(git rev-parse HEAD) || return 1
+  new_head=$(printf '%s\n' 'first commit' | git commit-tree 'HEAD^{tree}') || return 1
+  git reset --hard "$new_head" || return 1
+  git push --force-with-lease="$merge_ref:$upstream" "$remote" "HEAD:$merge_ref" || {
+    git reset --hard "$old_head"
+    echo "squash: push failed; restored the original history" >&2
+    return 1
+  }
+}
