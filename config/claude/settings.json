@@ -3,8 +3,10 @@
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
     "CLAUDE_CODE_DISABLE_1M_CONTEXT": "1"
   },
-  "enabledPlugins": {},
+  "model": "opus",
   "effortLevel": "medium",
+  "autoCompactWindow": 200000,
+  "enabledPlugins": {},
   "skipDangerousModePermissionPrompt": true,
   "tui": "fullscreen"
 }
