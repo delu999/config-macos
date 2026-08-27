@@ -4,7 +4,25 @@ alias gundo='git reset --soft HEAD~1'
 # git log
 gl() {
   echo ""
-  git log --format="%h  %C(green)%ar  %C(cyan)%<(9,trunc)%an%C(reset)  %s"
+  git log \
+    --format="%h  %C(green)%ar  %C(cyan)%<(9,trunc)%an%C(reset)  %s" \
+    --shortstat |
+    awk '
+      /files? changed/ {
+        added = deleted = 0
+
+        for (i = 1; i <= NF; i++) {
+          if ($i ~ /^insertions?\(\+\)/) added = $(i - 1)
+          if ($i ~ /^deletions?\(-\)/)  deleted = $(i - 1)
+        }
+
+        net = added - deleted
+        printf "%s, net %+d lines\n", $0, net
+        next
+      }
+
+      { print }
+    '
 }
 
 # git status
