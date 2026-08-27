@@ -3,26 +3,39 @@ alias gundo='git reset --soft HEAD~1'
 
 # git log
 gl() {
+  local dim grn red rst color=never
+  if [[ -t 1 ]]; then
+    color=always
+    dim=$'\033[2;37m'; grn=$'\033[32m'; red=$'\033[31m'; rst=$'\033[0m'
+  fi
+
   echo ""
-  git log \
-    --format="%h  %C(green)%ar  %C(cyan)%<(9,trunc)%an%C(reset)  %s" \
-    --shortstat |
-    awk '
-      /files? changed/ {
-        added = deleted = 0
+  git log --color=$color \
+    --format="%C(bold yellow)%h%C(reset)  %C(green)%<(13,trunc)%ar%C(reset)  %C(magenta)%<(10,trunc)%an%C(reset)%C(auto)%d%C(reset)  %s" \
+    --shortstat -10 "$@" |
+    awk -v dim="$dim" -v grn="$grn" -v red="$red" -v rst="$rst" '
+      /^ *[0-9]+ files? changed/ {
+        files = added = deleted = 0
 
         for (i = 1; i <= NF; i++) {
-          if ($i ~ /^insertions?\(\+\)/) added = $(i - 1)
-          if ($i ~ /^deletions?\(-\)/)  deleted = $(i - 1)
+          if ($i ~ /^files?$/)             files   = $(i - 1)
+          if ($i ~ /^insertions?\(\+\)/)   added   = $(i - 1)
+          if ($i ~ /^deletions?\(-\)/)     deleted = $(i - 1)
         }
 
-        net = added - deleted
-        printf "%s, net %+d lines\n", $0, net
+        printf "  %s└─%s %s%s file%s%s  %s+%s%s  %s-%s%s\n", \
+          dim, rst, \
+          dim, files, (files == 1 ? "" : "s"), rst, \
+          grn, added, rst, \
+          red, deleted, rst
         next
       }
 
-      { print }
+      /^[[:space:]]*$/ { next }
+
+      { print "  " $0 }
     '
+  echo ""
 }
 
 # git status
