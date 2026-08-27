@@ -7,9 +7,12 @@ script_dir=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
 copy_config() {
   source=$1
   destination=$2
+  source_path=$script_dir/$source
 
   mkdir -p "$(dirname -- "$destination")"
-  cp "$script_dir/$source" "$destination"
+  if ! cmp -s "$source_path" "$destination"; then
+    cp "$source_path" "$destination"
+  fi
 }
 
 copy_config "config/claude/settings.json" "$HOME/.claude/settings.json"
