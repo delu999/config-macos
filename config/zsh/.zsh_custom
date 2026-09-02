@@ -29,6 +29,8 @@ bindkey "\e[B" history-beginning-search-forward   # Down arrow: search history b
 
 source <(fzf --zsh)
 
+eval "$(mise activate zsh)"
+
 eval "$(starship init zsh)"
 
 if [[ -n ${GHOSTTY_RESOURCES_DIR:-} || ${TERM_PROGRAM:-} == vscode ]]; then
