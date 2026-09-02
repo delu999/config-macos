@@ -27,9 +27,9 @@ setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording en
 bindkey "\e[A" history-beginning-search-backward  # Up arrow: search history by prefix
 bindkey "\e[B" history-beginning-search-forward   # Down arrow: search history by prefix
 
-source <(fzf --zsh)
-
 eval "$(mise activate zsh)"
+
+source <(fzf --zsh)
 
 eval "$(starship init zsh)"
 
