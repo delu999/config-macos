@@ -15,14 +15,14 @@ Personal macOS configuration files for my development environment.
 - [ripgrep](https://github.com/BurntSushi/ripgrep) — faster and simpler `grep`, skips anything in `.gitignore`
 - [fd](https://github.com/sharkdp/fd) — faster and simpler `find`
 
-Install them with [mise](https://mise.jdx.dev/):
-
-```sh
-mise use -g ast-grep difftastic shellcheck shfmt yq ripgrep fd
-```
-
 Apply the configuration with:
 
 ```sh
 ./apply_config.sh
+```
+
+Then install the tools with [mise](https://mise.jdx.dev/), which reads the versions pinned in `config/mise/config.toml`:
+
+```sh
+mise install
 ```
