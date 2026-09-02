@@ -7,7 +7,7 @@ Personal macOS configuration files for my development environment.
 - [Starship](https://starship.rs/) — shell prompt
 - [fzf](https://github.com/junegunn/fzf) — command-line fuzzy finder
 - [zoxide](https://github.com/ajeetdsouza/zoxide) — smarter `cd` command
-- [ast-grep](https://ast-grep.github.io/) — structural search and replace across TS/TSX/PHP/Python, where `rg` only matches text
+- [ast-grep](https://ast-grep.github.io/) — languare aware, structural search and replace across TS/TSX/PHP/Python
 - [difftastic](https://difftastic.wilfred.me.uk/) — syntax-aware diff that hides reformatting noise when reviewing a commit
 - [shellcheck](https://www.shellcheck.net/) — catches quoting and word-splitting bugs in `.bashrc` and production scripts
 - [shfmt](https://github.com/mvdan/sh) — formatter for shell scripts
