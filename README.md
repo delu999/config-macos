@@ -18,7 +18,7 @@ Personal macOS configuration files for my development environment.
 Install them with [mise](https://mise.jdx.dev/):
 
 ```sh
-mise use -g duckdb clickhouse ast-grep difftastic yq shellcheck shfmt ripgrep fd
+mise use -g ast-grep difftastic yq shellcheck shfmt ripgrep fd
 ```
 
 Apply the configuration with:
