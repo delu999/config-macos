@@ -1,0 +1,23 @@
+[settings]
+# Refuse releases younger than 7 days, so a compromised release that gets
+# published and yanked within hours is never installed.
+minimum_release_age = "168h"
+
+# Extra-secure behavior.
+paranoid = true
+
+# Write exact resolved versions instead of fuzzy ones.
+pin = true
+
+# Create and read mise.lock so versions carry checksums.
+lockfile = true
+
+# Never install a tool just because an unknown command was typed.
+not_found_auto_install = false
+
+# Effectively disable the weekly plugin git refresh.
+plugin_autoupdate_last_check_duration = "876000h"
+
+# asdf and vfox run third-party plugin code from git. aqua, ubi and github
+# are declarative, and every tool in the README resolves through aqua.
+disable_backends = ["asdf", "vfox"]
