@@ -5,10 +5,10 @@
     "CLAUDE_CODE_DISABLE_AUTO_MEMORY": "1"
   },
   "model": "opus",
+  "enabledPlugins": {},
   "effortLevel": "medium",
   "autoCompactWindow": 200000,
-  "enabledPlugins": {},
-  "skipDangerousModePermissionPrompt": true,
   "tui": "fullscreen",
-  "autoMemoryEnabled": false
+  "autoMemoryEnabled": false,
+  "skipDangerousModePermissionPrompt": true
 }
