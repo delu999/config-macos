@@ -19,3 +19,4 @@ show_preview = false
 
 [ui]
 columns = ["datetime", "duration", "command"]
+syntax_highlight = false
