@@ -7,6 +7,7 @@ search_mode_shell_up_key_binding = "prefix"
 
 # Put the search field first and select commands for editing before execution.
 invert = false
+style = "full"
 enter_accept = false
 filter_mode_shell_up_key_binding = "directory"
 
