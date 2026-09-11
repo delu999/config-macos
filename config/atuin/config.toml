@@ -8,7 +8,7 @@ search_mode_shell_up_key_binding = "prefix"
 # Put the search field first and select commands for editing before execution.
 invert = false
 style = "full"
-enter_accept = false
+enter_accept = true
 filter_mode_shell_up_key_binding = "directory"
 
 # Hide the version/help/history-count row and Search/Inspect tabs.
@@ -21,7 +21,7 @@ show_preview = false
 columns = [
   "exit", 
   { type = "duration", width = 7 },
-  { type = "datetime", width = 35 },
+  { type = "datetime", width = 28 },
   "command"
 ]
 syntax_highlight = false
