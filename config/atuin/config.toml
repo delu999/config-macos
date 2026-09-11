@@ -1,4 +1,3 @@
-# Preserve the commands excluded from the old Zsh history.
 history_filter = ['^(clear|exit|squash|gs|gl|ll|cd|cl|co|history)$']
 
 # Search all sessions with Ctrl+R; match the typed prefix with Up.
@@ -7,7 +6,7 @@ filter_mode = "global"
 search_mode_shell_up_key_binding = "prefix"
 
 # Put the search field first and select commands for editing before execution.
-invert = true
+invert = false
 enter_accept = false
 filter_mode_shell_up_key_binding = "directory"
 
