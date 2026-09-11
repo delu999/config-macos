@@ -18,5 +18,10 @@ show_numeric_shortcuts = false
 show_preview = false
 
 [ui]
-columns = ["datetime", "duration", "command"]
+columns = [
+  "exit", 
+  { type = "duration", width = 7 },
+  { type = "datetime", width = 35 },
+  "command"
+]
 syntax_highlight = false
