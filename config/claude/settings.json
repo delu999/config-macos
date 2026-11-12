@@ -10,5 +10,24 @@
   "autoCompactWindow": 200000,
   "tui": "fullscreen",
   "autoMemoryEnabled": false,
-  "skipDangerousModePermissionPrompt": true
+  "skipDangerousModePermissionPrompt": true,
+  "switchModelsOnFlag": false,
+  "attribution": {
+    "commit": "",
+    "pr": "",
+    "sessionUrl": false
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/bin/sh -c 'rex __internal session-start --agent claude --feature-session-naming=false 2>/dev/null || true'",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
 }
