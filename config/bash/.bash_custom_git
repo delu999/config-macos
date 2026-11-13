@@ -99,3 +99,33 @@ squash() {
     return 1
   }
 }
+
+# fast-forward pull every repo in the subdirectories of the current directory, in parallel
+pullall() {
+  local grn red rst
+  if [[ -t 1 ]]; then
+    grn=$'\033[32m'; red=$'\033[31m'; rst=$'\033[0m'
+  fi
+
+  # the subshell keeps the background jobs out of job control, so no [n] pid / done lines
+  (
+    shopt -s nullglob
+    local git_dir d old out
+    for git_dir in */.git; do
+      d=${git_dir%/.git}
+      {
+        old=$(git -C "$d" rev-parse HEAD 2>/dev/null)
+        if out=$(git -C "$d" pull --ff-only -q 2>&1); then
+          if [[ $(git -C "$d" rev-parse HEAD) == "$old" ]]; then
+            echo "ok   $d"
+          else
+            echo "${grn}upd${rst}  $d"
+          fi
+        else
+          echo "${red}ERR${rst}  $d  ${out%%$'\n'*}"
+        fi
+      } &
+    done
+    wait
+  )
+}

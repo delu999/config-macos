@@ -11,6 +11,10 @@ invert = false
 enter_accept = false
 filter_mode_shell_up_key_binding = "directory"
 
+# Failed commands (typos, errors) are dropped by the _atuin_drop_failed hook in
+# ~/.bash_custom, which sets ATUIN_STORE_FAILED=false per command. Don't set
+# store_failed here: a value in this file overrides that env var.
+
 # Hide the version/help/history-count row and Search/Inspect tabs.
 show_help = false
 show_tabs = false

@@ -1,0 +1,52 @@
+alias code="open -a /Applications/VSCodium.app"
+alias zed="open -a /Applications/Zed.app"
+alias cl="claude --permission-mode bypassPermissions"
+alias co="codex -a never"
+alias ll="ls -lahFG"
+
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="/Users/u:$PATH"
+
+# Silence macOS's "default interactive shell is now zsh" notice.
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
+# Everything below is for interactive shells only (bash also reads ~/.bashrc
+# for commands run over ssh, which need the PATH above but not a prompt).
+[[ $- == *i* ]] || return 0
+
+# git completion (zsh had it built in; bash needs the script from the Command Line Tools)
+git_completion=/Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash
+[[ -r $git_completion ]] && . "$git_completion"
+unset git_completion
+
+eval "$(mise activate bash)"
+
+eval "$(fzf --bash)"
+
+eval "$(starship init bash)"
+eval "$(atuin init bash)"
+
+if [[ -n ${GHOSTTY_RESOURCES_DIR:-} || ${TERM_PROGRAM:-} == vscode ]]; then
+  eval "$(zoxide init bash --cmd cd)"
+else
+  eval "$(zoxide init bash)"
+fi
+
+# atuin: don't record commands that fail (typos, errors). Exit status != 0 makes
+# atuin delete the entry via ATUIN_STORE_FAILED=false, except failures that
+# aren't mistakes: commands stopped by a signal (Ctrl-C, closed terminal, ...)
+# and anything that ran >= 5s (ssh sessions, dev servers, long builds).
+# (store_failed must NOT be set in atuin's config.toml: it would win over this.)
+# Bash has no floating-point arithmetic, so EPOCHREALTIME is compared as whole
+# microseconds (its digits with the decimal separator stripped).
+_atuin_drop_failed() {
+  local exit=$? now=${EPOCHREALTIME//[!0-9]/} start=${__atuin_preexec_time//[!0-9]/}
+  unset ATUIN_STORE_FAILED
+  ((exit == 0)) && return
+  ((exit > 128 && exit < 255)) && return
+  [[ -n $now && -n $start ]] && ((now - start >= 5000000)) && return
+  export ATUIN_STORE_FAILED=false
+}
+_atuin_drop_failed_reset() { unset ATUIN_STORE_FAILED; }
+precmd_functions=(_atuin_drop_failed "${precmd_functions[@]}")
+preexec_functions+=(_atuin_drop_failed_reset)

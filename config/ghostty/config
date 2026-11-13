@@ -3,7 +3,7 @@ link-url = false
 maximize = true
 font-size = 18
 clipboard-trim-trailing-spaces = true
-command = /bin/zsh --login
+command = /Users/u/.local/bin/bash --login
 
 keybind = cmd+option+ctrl+shift+a=ignore
 keybind = cmd+option+ctrl+shift+b=ignore
