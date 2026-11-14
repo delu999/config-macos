@@ -5,7 +5,7 @@
   },
   "model": "opus",
   "enabledPlugins": {},
-  "effortLevel": "medium",
+  "effortLevel": "high",
   "tui": "fullscreen",
   "autoMemoryEnabled": false,
   "skipDangerousModePermissionPrompt": true,
