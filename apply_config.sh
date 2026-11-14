@@ -24,5 +24,6 @@ copy_config "config/mise/config.toml" "$HOME/.config/mise/config.toml"
 copy_config "config/bash/.bash_custom" "$HOME/.bash_custom"
 copy_config "config/bash/.bash_custom_git" "$HOME/.bash_custom_git"
 copy_config "config/bash/.bash_profile" "$HOME/.bash_profile"
+copy_config "config/bash/.bashrc" "$HOME/.bashrc"
 
 echo "Config applied."
