@@ -4,6 +4,20 @@ alias cl="claude --permission-mode bypassPermissions"
 alias co="codex -a never"
 alias ll="ls -lahFG"
 
+# Compile a C++ file and run it: cr sol.cpp < in.txt
+# The binary goes to $TMPDIR, so nothing is left in the repo to commit.
+cr() {
+  if [[ $# -eq 0 ]]; then
+    echo "usage: cr file.cpp [args...]" >&2
+    return 2
+  fi
+  local bin
+  bin=${TMPDIR:-/tmp/}cr/$(basename -- "${1%.cpp}")
+  mkdir -p "${bin%/*}"
+  g++-16 -std=c++23 -O2 -Wall -Wextra -Wshadow -Wl,-stack_size,0x20000000 -o "$bin" "$1" &&
+    "$bin" "${@:2}"
+}
+
 eval "$(/opt/homebrew/bin/brew shellenv bash)"
 
 export PATH="$HOME/.opencode/bin:$PATH"
