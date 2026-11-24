@@ -47,6 +47,21 @@
                         ]
                     },
                     {
+                        "description": "Disable cmd + tab to break the app switcher habit",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "tab",
+                                    "modifiers": {
+                                        "mandatory": ["command"],
+                                        "optional": ["shift"]
+                                    }
+                                },
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Cmd+Q to Cmd+W in Finder only",
                         "manipulators": [
                             {
