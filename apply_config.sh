@@ -17,7 +17,6 @@ copy_config() {
 
 copy_config "config/atuin/config.toml" "$HOME/.config/atuin/config.toml"
 copy_config "config/claude/settings.json" "$HOME/.claude/settings.json"
-copy_config "config/ghostty/config" "$HOME/.config/ghostty/config"
 copy_config "config/git/ignore" "$HOME/.config/git/ignore"
 copy_config "config/karabiner/karabiner.json" "$HOME/.config/karabiner/karabiner.json"
 copy_config "config/mise/config.toml" "$HOME/.config/mise/config.toml"
