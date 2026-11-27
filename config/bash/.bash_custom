@@ -1,7 +1,7 @@
 alias code="open -a /Applications/VSCodium.app"
 alias zed="open -a /Applications/Zed.app"
 alias cl="claude --permission-mode bypassPermissions"
-alias co="codex -a never"
+alias co="codex -a never -s danger-full-access"
 alias ll="ls -lahFG"
 
 # Compile a C++ file and run it: cr sol.cpp < in.txt
